@@ -4,9 +4,9 @@ on: [push]
 jobs:
   train-and-report:
     runs-on: ubuntu-latest
-    container: docker://dvcorg/cml-py3:latest # Container with CML, DVC, Python
+    container: docker://iterativeai/cml:latest # Changed to newer official CML image
     steps:
-      - uses: actions/checkout@v3 # Checks out your repository
+      - uses: actions/checkout@v4 # Changed to v4 (uses Node.js 20)
 
       - name: 'Set up CML & Train Model'
         env:
@@ -26,12 +26,12 @@ jobs:
           echo "## Model Training Report" > report.md
           
           echo "### Metrics" >> report.md
-          # Assuming your model.py writes key metrics to metrics.txt
+          # Assuming your fake_id.py writes key metrics to metrics.txt
           cat metrics.txt >> report.md
           echo "" >> report.md # Add a newline for spacing
 
           echo "### Visualizations" >> report.md
-          # Assuming your model.py saves a plot as model_results.png
+          # Assuming your fake_id.py saves a plot as model_results.png
           cml-publish model_results.png --md >> report.md
           
           # Send the report as a comment
