@@ -1,1 +1,38 @@
- 
+name: Basic MLOps Training Workflow
+on: [push]
+
+jobs:
+  train-and-report:
+    runs-on: ubuntu-latest
+    container: docker://dvcorg/cml-py3:latest # Container with CML, DVC, Python
+    steps:
+      - uses: actions/checkout@v3 # Checks out your repository
+
+      - name: 'Set up CML & Train Model'
+        env:
+          # This is needed for CML to comment on PRs/commits
+          # Ensure you have a GITHUB_TOKEN secret in your repository settings
+          # It's usually provided by default by GitHub Actions.
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Install Python dependencies
+          pip install -r requirements.txt
+
+          # Run your model training script
+          # This script should generate metrics.txt and model_results.png
+          python model.py 
+
+          # Create a CML report
+          echo "## Model Training Report" > report.md
+          
+          echo "### Metrics" >> report.md
+          # Assuming your model.py writes key metrics to metrics.txt
+          cat metrics.txt >> report.md
+          echo "" >> report.md # Add a newline for spacing
+
+          echo "### Visualizations" >> report.md
+          # Assuming your model.py saves a plot as model_results.png
+          cml-publish model_results.png --md >> report.md
+          
+          # Send the report as a comment
+          cml-send-comment report.md
