@@ -1,3 +1,7 @@
-tensorflow
+pandas
 numpy
 matplotlib
+seaborn
+instaloader
+scikit-learn 
+re
