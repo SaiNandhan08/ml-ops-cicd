@@ -206,7 +206,8 @@ def run_ensemble(X_train, y_train, X_test, y_test):
     print(f"True Negatives (Real profiles predicted as Real): {true_negatives}")
     print(f"True Positives (Fake profiles correctly predicted as Fake): {true_positives}")
     
-    return voting_clf
+    with open('metrics.txt', 'w') as outfile:
+        outfile.write(f'\n Confusion Matrix: {cm}')
 
 # --------------------
 # Run the entire flow
