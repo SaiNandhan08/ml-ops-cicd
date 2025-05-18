@@ -20,7 +20,7 @@ jobs:
 
           # Run your model training script
           # This script should generate metrics.txt and model_results.png
-          python model.py 
+          python fake_id.py 
 
           # Create a CML report
           echo "## Model Training Report" > report.md
