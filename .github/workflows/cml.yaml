@@ -10,9 +10,6 @@ jobs:
 
       - name: 'Set up CML & Train Model'
         env:
-          # This is needed for CML to comment on PRs/commits
-          # Ensure you have a GITHUB_TOKEN secret in your repository settings
-          # It's usually provided by default by GitHub Actions.
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Install Python dependencies
