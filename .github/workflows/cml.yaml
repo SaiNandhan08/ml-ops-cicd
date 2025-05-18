@@ -15,7 +15,6 @@ jobs:
           # It's usually provided by default by GitHub Actions.
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Install Python dependencies
           pip install -r requirements.txt
 
           # Run your model training script
