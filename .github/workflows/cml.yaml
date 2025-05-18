@@ -22,17 +22,4 @@ jobs:
           # This script should generate metrics.txt and model_results.png
           python fake_id.py 
 
-          # Create a CML report
-          echo "## Model Training Report" > report.md
-          
-          echo "### Metrics" >> report.md
-          # Assuming your model.py writes key metrics to metrics.txt
-          cat metrics.txt >> report.md
-          echo "" >> report.md # Add a newline for spacing
-
-          echo "### Visualizations" >> report.md
-          # Assuming your model.py saves a plot as model_results.png
-          cml-publish model_results.png --md >> report.md
-          
-          # Send the report as a comment
-          cml-send-comment report.md
+       
