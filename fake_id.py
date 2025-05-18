@@ -233,10 +233,11 @@ def main():
     train_models(X_train, y_train, X_test, y_test)
 
     # Voting Ensemble
-    voting_model = run_ensemble(X_train, y_train, X_test, y_test)
+#    voting_model = 
+    run_ensemble(X_train, y_train, X_test, y_test)
 
     # Predict one sample
-    print("\n🔗 Paste the Instagram profile URL to check:")
+'''   print("\n🔗 Paste the Instagram profile URL to check:")
     ig_url = input()
 
     scraped_data = scrape_profile_features(ig_url)
@@ -253,7 +254,7 @@ def main():
         print(f"\n🎯 Prediction for {ig_url}: {result}")
     else:
         # scrape_profile_features returned None (e.g., error or invalid URL)
-        print(f"Could not retrieve features for {ig_url}.")
+        print(f"Could not retrieve features for {ig_url}.") '''
 
 if __name__ == "__main__":
     main()
