@@ -18,7 +18,7 @@ jobs:
           # Install Python dependencies
           pip install -r requirements.txt
 
-          # Run your model training script
+          # Run model training script
           # This script should generate metrics.txt and model_results.png
           python fake_id.py 
 
