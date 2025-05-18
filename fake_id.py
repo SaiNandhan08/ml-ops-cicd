@@ -243,14 +243,14 @@ def main():
     scraped_data = scrape_profile_features(ig_url)
     
     if scraped_data == "SUSPICIOUS_LINK_FOUND":
-        result = "Fake ID ❌ (Suspicious link in bio)"
+        result = "Fake ID (Suspicious link in bio)"
         print(f"\n🎯 Prediction for {ig_url}: {result}")
     elif scraped_data is not None: # Check if it's a feature list
         features = scraped_data
         prediction = voting_model.predict([features])
         # Your existing logic for fake vs real based on prediction[0]
         # Assuming 0 is Real and 1 is Fake
-        result = "Real ID ✅" if prediction[0] == 0 else "Fake ID ❌"
+        result = "Real ID " if prediction[0] == 0 else "Fake ID"
         print(f"\n🎯 Prediction for {ig_url}: {result}")
     else:
         # scrape_profile_features returned None (e.g., error or invalid URL)
